@@ -6,6 +6,8 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use Auth;
 use Twilio\Rest\Client;
+use App\Mail\Notification;
+use Illuminate\Support\Facades\Mail;
 
 class Plant extends Component
 {
@@ -27,16 +29,7 @@ class Plant extends Component
 
     public function notification()
     {
-        $sid    = "ACfe3a14435a41ff7d4c9493197d9e6dac"; 
-        $token  = "[Redacted]"; 
-        $twilio = new Client($sid, $token);
-        
-        $message = $twilio->messages 
-                  ->create("whatsapp:+5491134214001", // to 
-                           array( 
-                               "from" => "whatsapp:+14155238886",       
-                               "body" => "Tenes cuervos en tu granja. Entra rapidamente antes que te barran el patio." 
-                           ) 
-                  ); 
+        Mail::to(Auth::user()->email)
+        ->send(new Notification());
     }
 }
