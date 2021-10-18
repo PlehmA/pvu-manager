@@ -12,7 +12,6 @@
                     </p>
                     <p class="text-gray-500 text-base border text-center">
                         {{ $item['stage'] == 'farming' ? 'Farmings' : 'Crow' }}
-                        
                     </p>
                   </div>
             </div>
