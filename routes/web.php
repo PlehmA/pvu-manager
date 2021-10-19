@@ -18,7 +18,9 @@ use App\Http\Controllers\PlantController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/phpinfo', function () {
+    return phpinfo();
+});
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('plant', [PlantController::class, 'index'])->name('plant');
