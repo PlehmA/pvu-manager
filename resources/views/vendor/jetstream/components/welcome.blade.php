@@ -19,7 +19,9 @@
         @endforeach
       </div>
       @else
-<x-jet-action-section>
-</x-jet-action-section>
-      @endif
+      <div class="bg-gray-500 border border-black text-gray-900 px-4 py-3 rounded relative mt-3" role="alert">
+        <strong class="font-bold">Dear User!</strong>
+        <span class="block sm:inline">You need to fill BEARER_TOKEN in profile user form to receive feed information. ♥</span>
+      </div>
+@endif
 </div>

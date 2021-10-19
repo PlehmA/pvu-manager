@@ -1,5 +1,6 @@
 <div>
-    @isset($data)
+
+    @if(blank($data) === null)
 
     <div class="rounded overflow-hidden shadow-lg justify-center bg-gray-800 w-60 m-auto">
         <img src="{{ $data['data']['plant']['iconUrl'] }}" class="max-h-40 m-auto" alt="">
@@ -16,8 +17,13 @@
             </p>
           </div>
     </div>
-    @endisset
-
+    @endif
+    @if (session()->has('message'))
+    <div class="bg-red-500 border border-black text-white px-4 py-3 rounded relative mt-3 text-center max-w-md mx-auto" role="alert">
+        <strong class="font-bold"> {{ session('message') }} </strong>
+        <span class="block sm:inline"></span>
+      </div>
+    @endif
     <div class="rounded overflow-hidden shadow-lg justify-center bg-gray-800 w-1/2 m-auto p-20 mt-3">
     <x-jet-label>
         Plant ID
@@ -29,8 +35,8 @@
         <x-jet-button type="submit" wire:click="show" class="mt-3">
             Search
         </x-jet-button>
-        <x-jet-button type="submit" wire:click="notification" class="mt-3">
+        {{-- <x-jet-button type="submit" wire:click="notification" class="mt-3">
             Notification
-        </x-jet-button>
+        </x-jet-button> --}}
     </div>
 </div>

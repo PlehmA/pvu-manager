@@ -23,7 +23,10 @@ class Plant extends Component
     {
         $response = Http::withToken(Auth::user()->bearer_token)
         ->get('https://backend-farm.plantvsundead.com/get-plant-detail-v2?plantId='.$this->plantid);
-
+        
+        if(blank($response->collect()['data'])) {
+            session()->flash('message', 'Plant not found!.');
+        }
         $this->data = $response->collect();
     }
 
