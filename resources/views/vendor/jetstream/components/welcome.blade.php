@@ -1,4 +1,5 @@
 <div class="sm:px-20 bg-gray-900">
+    @if (Auth::user()->bearer_token)
     <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         @foreach ($plants['data'] as $item)
             <div class="rounded overflow-hidden shadow-lg justify-center bg-gray-800">
@@ -16,6 +17,9 @@
                   </div>
             </div>
         @endforeach
-        
       </div>
+      @else
+<x-jet-action-message>
+</x-jet-action-message>
+      @endif
 </div>
