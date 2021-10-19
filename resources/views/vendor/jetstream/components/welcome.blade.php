@@ -19,7 +19,7 @@
         @endforeach
       </div>
       @else
-<x-jet-action-message>
-</x-jet-action-message>
+<x-jet-action-section>
+</x-jet-action-section>
       @endif
 </div>
